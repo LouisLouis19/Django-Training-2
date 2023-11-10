@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contact List</title>
+  </head>
+  <body>
+    <h1>Contact List</h1>
+    <a href="{% url 'contact_create' %}">Add Contact</a>
+    <ul>
+      {% for contact in contacts %}
+      <li>
+        {{ contact.first_name }} {{ contact.last_name }}<br />
+        Email: {{ contact.email }}<br />
+        Phone: {{ contact.phone_number }}<br />
+        [<a href="{% url 'contact_edit' contact.id %}">Edit</a>] [<a
+          href="{% url 'contact_delete' contact.id %}"
+          >Delete</a
+        >]
+      </li>
+      {% empty %}
+      <li>No contacts available</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
